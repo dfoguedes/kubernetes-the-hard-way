@@ -11,3 +11,13 @@ provider "google" {
   region  = var.region
 }
 
+
+module "jumpserver" {
+  source                  = "./modules/linux-vm"
+  project_id              = var.project_id
+  region                  = var.region
+  instance_name           = "jumpbox"
+  machine_type            = "e2-micro"
+  metadata_startup_script = file("${path.root}/scripts/jumpserver.sh")
+
+}

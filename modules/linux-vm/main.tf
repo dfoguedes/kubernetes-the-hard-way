@@ -12,4 +12,5 @@ resource "google_compute_instance" "this" {
     network = "default"
     access_config {}
   }
+  metadata_startup_script = var.metadata_startup_script
 }
