@@ -1,0 +1,84 @@
+# Compiled source and binary files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.out
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.swp
+*.swo
+*.tmp
+*.bak
+*.old
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+*.kate-swp
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+terraform.tfvars
+terraform.tfvars.json
+*.tfplan
+
+# Shell script artifacts
+*.sh~
+*.swp
+*.swo
+
+# Module output
+modules/**/.terraform/
+modules/**/terraform.tfstate*
+modules/**/crash.log
+modules/**/crash.*.log
+modules/**/override.tf
+modules/**/override.tf.json
+modules/**/*_override.tf
+modules/**/*_override.tf.json
+modules/**/terraform.tfvars
+modules/**/terraform.tfvars.json
+modules/**/*.tfplan
+
+# Sensitive files
+secrets.*
+*.pem
+*.key
+*.crt
+*.csr
+
+# Misc
+node_modules/
+dist/
+build/
+coverage/
+venv/
+env/
+__pycache__/
