@@ -2,6 +2,7 @@
 resource "google_compute_instance" "this" {
   name         = var.instance_name
   machine_type = var.machine_type
+  zone         = var.zone
   boot_disk {
 
     initialize_params {

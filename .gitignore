@@ -37,6 +37,8 @@ Desktop.ini
 
 # Terraform
 .terraform/
+terraform.tfstate
+.terraform.lock.hcl
 *.tfstate
 *.tfstate.*
 crash.log

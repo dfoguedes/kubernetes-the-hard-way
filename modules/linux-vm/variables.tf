@@ -3,6 +3,9 @@ variable "project_id" {
   description = "Google project id"
 }
 
+variable "zone" {
+  description = "Google Zone"
+}
 variable "region" {
   description = "Google region"
 }
@@ -18,3 +21,4 @@ variable "metadata_startup_script" {
   description = "Metadata startup script for the Linux instance"
   default     = ""
 }
+ 
