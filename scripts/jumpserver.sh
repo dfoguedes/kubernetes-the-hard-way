@@ -37,3 +37,10 @@ mv downloads/{etcd,kube-apiserver,kube-controller-manager,kube-scheduler} \
 downloads/controller/
 mv downloads/{kubelet,kube-proxy} downloads/worker/
 mv downloads/runc.${ARCH} downloads/worker/runc
+
+# Remove .gz files
+rm -rf downloads/*gz
+
+# move kubernetes to your local user installed software path
+cp downloads/client/kubectl /usr/local/bin/
+
