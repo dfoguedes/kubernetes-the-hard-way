@@ -6,7 +6,7 @@ resource "google_compute_network" "this" {
 resource "google_compute_subnetwork" "this" {
   name          = "kth-subnet"
   project       = var.project_id
-  ip_cidr_range = "9.240.0.0/24"
+  ip_cidr_range = "10.240.0.0/24"
   region        = var.region
   network       = google_compute_network.this.name
 }
