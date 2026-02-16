@@ -1,6 +1,7 @@
 resource "google_compute_network" "this" {
-  name    = "kubernetes-the-hardway"
-  project = var.project_id
+  name                    = "kubernetes-the-hardway"
+  project                 = var.project_id
+  auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "this" {

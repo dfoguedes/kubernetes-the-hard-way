@@ -47,4 +47,5 @@ rm -rf downloads/*gz
 
 # move kubernetes to your local user installed software path
 cp downloads/client/kubectl /usr/local/bin/
+chmod +x /usr/local/bin
 
