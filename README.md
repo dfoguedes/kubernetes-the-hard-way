@@ -1,64 +1,30 @@
-# Kubernetes The Hard Way (Terraform Edition)
+# kubernetes-the-hard-way
 
-This project provides an automated, step-by-step approach to deploying a Kubernetes cluster from scratch using Terraform. It is designed for users who want to understand the inner workings of Kubernetes infrastructure by building each component manually, but with the convenience and repeatability of Infrastructure as Code.
+This repository follows the "Kubernetes the Hard Way" tutorial, automating the setup of a Kubernetes cluster from scratch for educational purposes.
 
-## Project Overview
+## Repository Structure
 
-- **Infrastructure as Code:** All resources are defined using Terraform modules for easy management and reproducibility.
-- **Modular Design:** Each major component (control plane, worker nodes, jumpbox) is defined as a separate module for clarity and reusability.
-- **Cloud Agnostic:** The structure can be adapted to different cloud providers or on-premise environments with minimal changes.
-- **Educational Focus:** The project is ideal for learning, experimentation, and gaining a deep understanding of Kubernetes cluster setup and operations.
+- `Vagrantfile`: Vagrant configuration for provisioning local VMs.
+- `scripts/`: Contains setup and automation scripts.
+- `.gitignore`: Ensures that local state and provider files (such as `.terraform/`) are not committed.
 
-## Architecture
+## Large File Issue
 
-The cluster consists of:
+If you encounter errors when pushing to GitHub due to large files (e.g., Terraform provider binaries), follow these steps:
 
-| Name    | Role                     | vCPU | RAM   | Disk |
-| ------- | ------------------------ | ---- | ----- | ---- |
-| jumpbox | Administration host      | 1    | 512MB | 10GB |
-| server  | Kubernetes control plane | 1    | 2GB   | 20GB |
-| node-0  | Kubernetes worker node   | 1    | 2GB   | 20GB |
-| node-1  | Kubernetes worker node   | 1    | 2GB   | 20GB |
+1. **Do not commit `.terraform/` or other generated files.**
+   - `.terraform/` is already in `.gitignore`.
+2. **If a large file was committed:**
+   - Use [git-filter-repo](https://github.com/newren/git-filter-repo) or [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) to remove it from your git history.
+   - Example with git-filter-repo:
+     ```sh
+     git filter-repo --path .terraform/providers/registry.terraform.io/hashicorp/google/7.19.0/linux_amd64/terraform-provider-google_v7.19.0_x5 --invert-paths
+     git push origin main --force
+     ```
 
-## Getting Started
-
-### Prerequisites
-
-- [Terraform](https://www.terraform.io/downloads.html)
-- Access to a supported cloud provider or virtualization platform
-- Basic knowledge of Kubernetes and Terraform
-
-### Usage
-
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/dfoguedes/kubernetes-the-hard-way.git
-   cd kubernetes-the-hard-way
-   ```
-2. Initialize Terraform:
-   ```sh
-   terraform init
-   ```
-3. Review and customize variables in `terraform.tfvars` as needed.
-4. Apply the configuration:
-   ```sh
-   terraform apply
-   ```
-5. Follow the output instructions to access your jumpbox and continue with manual cluster bootstrapping steps if required.
-
-## Directory Structure
-
-- `main.tf` – Main Terraform configuration
-- `variables.tf` – Input variables
-- `terraform.tfvars` – Variable values (should be gitignored if containing secrets)
-- `modules/` – Contains reusable Terraform modules (e.g., `linux-vm`)
-- `scripts/` – Helper scripts for provisioning each component
-
-## Notes
-
-- This project is intended for educational and experimental use. For production deployments, further security and scalability considerations are required.
-- Sensitive files and Terraform state are excluded from version control via `.gitignore`.
+## References
+- [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+- [GitHub Large File Storage](https://git-lfs.github.com/)
 
 ## License
-
-This project is open source and available under the MIT License.
+MIT
